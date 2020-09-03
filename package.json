@@ -6,7 +6,7 @@
   "scripts": {
     "start":"node server.js",
     "dev": "nodemon server.js",
-    "build": "NODE_ENV=production server.js",
+    "build": "NODE_ENV=production node server.js",
     "authServer": "nodemon authServer.js",
     "buildauthServer": "NODE_ENV=production nodemon authServer.js",
     "test": "echo \"Error: no test specified\" && exit 1"
