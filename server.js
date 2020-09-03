@@ -1,27 +1,29 @@
-const dotenv = require('dotenv');
-const app = require('./app');
+const dotenv = require('dotenv')
+const app = require('./app')
 
-dotenv.config({ path: './config.env' });
+dotenv.config({ path: './config.env' })
 
-const server = app.listen(process.env.PORT_SERVER, () => {
-  console.log(`Listening on port ${process.env.PORT_SERVER}...`);
-});
+const port = process.env.PORT_SERVER || 8080
+
+const server = app.listen(port, () => {
+  console.log(`Listening on port ${port}...`)
+})
 
 //********************** Unhandled Rejections - Start **********************/
 
-process.on('unhandledRejection', err => {
-  console.log('UNHANDLED REJECTION! Shutting down the application...');
-  console.log(err.name, err.message);
+process.on('unhandledRejection', (err) => {
+  console.log('UNHANDLED REJECTION! Shutting down the application...')
+  console.log(err.name, err.message)
   server.close(() => {
-    process.exit(1);
-  });
-});
+    process.exit(1)
+  })
+})
 
 process.on('SIGTERM', () => {
-  console.log('Sigterm received: Shutting down gracefully!');
+  console.log('Sigterm received: Shutting down gracefully!')
   server.close(() => {
-    console.log('Process terminated!');
-  });
-});
+    console.log('Process terminated!')
+  })
+})
 
 //********************** Unhandled Rejections - End **********************/
