@@ -3,7 +3,7 @@ const app = require('./app')
 
 dotenv.config({ path: './config.env' })
 
-const port = process.env.PORT_SERVER || 8080
+const port = process.env.PORT_SERVER || 3000
 
 const server = app.listen(port, () => {
   console.log(`Listening on port ${port}...`)
